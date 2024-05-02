@@ -7,6 +7,7 @@ public class MatrixBinSearch {
         while(left <= right) {
             int mid = (left + right) / 2;
             int midNum = matrix[mid / col][mid % col];
+            System.out.println(midNum);
             if(target == midNum) {
                 return true;
             } else if(target > midNum) {
