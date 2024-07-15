@@ -22,7 +22,7 @@ public class SymmetricTree {
     public boolean isSymmetric(TreeNode root) {
         return check(root.left, root.right);
     }
-
+    
     public static void main(String[] Args) {
 
     }
