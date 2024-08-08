@@ -6,7 +6,7 @@ public class ZigzagConversion {
         int length = s.length();
         if(numRows == 1 || length == 1 || numRows >= length) return s;
         int diagonal = numRows - 2;
-        Map<Integer, StringBuilder> mp = new HashMap<>();
+        StringBuilder[] builders = new StringBuilder[numRows];
         StringBuilder ans = new StringBuilder(length);
         int row = 0;
         boolean isInDiagonal = false;
@@ -19,16 +19,10 @@ public class ZigzagConversion {
             if(row == numRows - 1) {
                 isInDiagonal = true;
             }
-
-            if(mp.containsKey(row)) {
-                StringBuilder temp = mp.get(row);
-                temp.append(s.charAt(i));
-                mp.replace(row, temp);
-            } else {
-                StringBuilder temp = new StringBuilder();
-                temp.append(s.charAt(i));
-                mp.put(row, temp);
+            if(builders[row] == null) {
+                builders[row] = new StringBuilder();
             }
+            builders[row].append(s.charAt(i));
             if(isInDiagonal) {
                 row--;
             } else {
@@ -36,7 +30,7 @@ public class ZigzagConversion {
             }
         }
         for(int i = 0; i < numRows; i++) {
-            ans.append(mp.get(i));
+            ans.append(builders[i]);
         }
         return ans.toString();
     }
