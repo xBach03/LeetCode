@@ -8,6 +8,8 @@ public class JumpGame {
             while(canReach[i] && temp > 0) {
                 if (i + temp < nums.length) {
                     canReach[i + temp] = true;
+                } else {
+                    return true;
                 }
                 temp--;
             }
